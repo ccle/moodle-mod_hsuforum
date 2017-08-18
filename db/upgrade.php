@@ -224,10 +224,24 @@ function xmldb_hsuforum_upgrade($oldversion) {
 
         // Forum savepoint reached.
         upgrade_mod_savepoint(true, 2016052301, 'hsuforum');
+
     }
     // Moodle v3.1.0 release upgrade line.
     // Put any upgrade step following this.
+        if ($oldversion < 2016121301) {
 
+        // Define field hidereveal to be added to hsuforum.
+        $table = new xmldb_table('hsuforum');
+        $field = new xmldb_field('hidereveal', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, '0', 'gradetype');
+
+        // Conditionally launch add field hidereveal.
+        if (!$dbman->field_exists($table, $field)) {
+            $dbman->add_field($table, $field);
+        }
+
+        // Hsuforum savepoint reached.
+        upgrade_mod_savepoint(true, 2016121301, 'hsuforum');
+    }
     return true;
 }
 

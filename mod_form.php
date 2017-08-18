@@ -86,6 +86,11 @@ class mod_hsuforum_mod_form extends moodleform_mod {
         $mform->addElement('advcheckbox', 'anonymous', get_string('allowanonymous', 'hsuforum'));
         $mform->addHelpButton('anonymous', 'allowanonymous', 'hsuforum');
 
+        // Allow hide reveal.
+        $mform->addElement('advcheckbox', 'hidereveal', get_string('hidereveal', 'hsuforum'));
+        $mform->addHelpButton('hidereveal', 'hidereveal', 'hsuforum');
+        $mform->disabledIf('hidereveal', 'anonymous');
+
         // Display word count?
         $mform->addElement('advcheckbox', 'displaywordcount', get_string('displaywordcount', 'hsuforum'));
         $mform->addHelpButton('displaywordcount', 'displaywordcount', 'hsuforum');

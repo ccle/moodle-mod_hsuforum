@@ -1482,7 +1482,7 @@ HTML;
                 $actionurl->param('groupinfo', groups_get_activity_group($cm));
             }
         }
-        if ($forum->anonymous) {
+        if ($forum->anonymous && (!$forum->hidereveal)) {
             $extrahtml .= html_writer::tag('label', get_string('reveal', 'hsuforum') . ' ' .
                     html_writer::checkbox('reveal', 1, !empty($data['reveal'])));
         }
@@ -1574,8 +1574,10 @@ HTML;
         }
         if ($forum->anonymous && !$isedit
             || $forum->anonymous && $isedit && $ownpost) {
-            $extrahtml .= html_writer::tag('label', get_string('reveal', 'hsuforum') . ' ' .
-                    html_writer::checkbox('reveal', 1, !empty($data['reveal'])));
+            if (!$forum->hidereveal) {
+                $extrahtml .= html_writer::tag('label', get_string('reveal', 'hsuforum') . ' ' .
+                        html_writer::checkbox('reveal', 1, !empty($data['reveal'])));
+            }
         }
         $data += array(
             'postid'          => ($isedit) ? $postid : 0,
