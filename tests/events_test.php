@@ -1285,12 +1285,13 @@ class mod_hsuforum_events_testcase extends advanced_testcase {
     }
 
     /**
-     * Test the post_created event for a single discussion forum.
+     * Test the post_created event is anonymous for anonymous forums.
      */
-    public function test_post_created_single() {
+    public function test_post_created_anonymous() {
         // Setup test data.
         $course = $this->getDataGenerator()->create_course();
-        $forum = $this->getDataGenerator()->create_module('hsuforum', array('course' => $course->id, 'type' => 'single'));
+        $forum = $this->getDataGenerator()->create_module('hsuforum', 
+                array('course' => $course->id, 'type' => 'single', 'anonymous' => 1));
         $user = $this->getDataGenerator()->create_user();
 
         // Add a discussion.
@@ -1311,7 +1312,8 @@ class mod_hsuforum_events_testcase extends advanced_testcase {
         $params = array(
             'context' => $context,
             'objectid' => $post->id,
-            'other' => array('discussionid' => $discussion->id, 'forumid' => $forum->id, 'forumtype' => $forum->type)
+            'other' => array('discussionid' => $discussion->id, 'forumid' => $forum->id, 'forumtype' => $forum->type),
+            'anonymous' => $forum->anonymous
         );
 
         $event = \mod_hsuforum\event\post_created::create($params);
@@ -1323,18 +1325,9 @@ class mod_hsuforum_events_testcase extends advanced_testcase {
         $this->assertCount(1, $events);
         $event = reset($events);
 
-        // Checking that the event contains the expected values.
+        // Checking that the event is anonymous.
         $this->assertInstanceOf('\mod_hsuforum\event\post_created', $event);
-        $this->assertEquals($context, $event->get_context());
-        $expected = array($course->id, 'hsuforum', 'add post', "view.php?f={$forum->id}#p{$post->id}",
-            $forum->id, $forum->cmid);
-        $this->assertEventLegacyLogData($expected, $event);
-        $url = new \moodle_url('/mod/hsuforum/view.php', array('f' => $forum->id));
-        $url->set_anchor('p'.$event->objectid);
-        $this->assertEquals($url, $event->get_url());
-        $this->assertEventContextNotUsed($event);
-
-        $this->assertNotEmpty($event->get_name());
+        $this->assertEquals('1', $event->anonymous);
     }
 
     /**

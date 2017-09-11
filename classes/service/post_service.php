@@ -355,7 +355,8 @@ class post_service {
                 'discussionid' => $discussion->id,
                 'forumid'      => $forum->id,
                 'forumtype'    => $forum->type,
-            )
+            ),
+            'anonymous' => $forum->anonymous
         );
         $event = post_created::create($params);
         $event->add_record_snapshot('hsuforum_posts', $post);

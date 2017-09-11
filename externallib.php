@@ -845,7 +845,8 @@ class mod_hsuforum_external extends external_api {
                     'discussionid' => $discussion->id,
                     'forumid' => $forum->id,
                     'forumtype' => $forum->type,
-                )
+                ),
+                'anonymous' => $forum->anonymous
             );
             $event = \mod_hsuforum\event\post_created::create($params);
             $event->add_record_snapshot('hsuforum_posts', $post);

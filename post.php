@@ -718,7 +718,8 @@ if ($fromform = $mform_post->get_data()) {
                 'discussionid' => $discussion->id,
                 'forumid' => $forum->id,
                 'forumtype' => $forum->type,
-            )
+            ),
+            'anonymous' => $forum->anonymous
         );
 
         if ($realpost->userid !== $USER->id) {
@@ -771,7 +772,8 @@ if ($fromform = $mform_post->get_data()) {
                     'discussionid' => $discussion->id,
                     'forumid' => $forum->id,
                     'forumtype' => $forum->type,
-                )
+                ),
+                'anonymous' => $forum->anonymous
             );
             $event = \mod_hsuforum\event\post_created::create($params);
             $event->add_record_snapshot('hsuforum_posts', $post);
@@ -866,7 +868,8 @@ if ($fromform = $mform_post->get_data()) {
                     'objectid' => $discussion->id,
                     'other' => array(
                         'forumid' => $forum->id,
-                    )
+                    ),
+                    'anonymous' => $forum->anonymous
                 );
                 $event = \mod_hsuforum\event\discussion_created::create($params);
                 $event->add_record_snapshot('hsuforum_discussions', $discussion);

@@ -4532,6 +4532,15 @@ function hsuforum_delete_post($post, $children, $course, $cm, $forum, $skipcompl
  * @return bool
 */
 function hsuforum_trigger_content_uploaded_event($post, $cm, $name) {
+    global $DB;
+    // Is the forum anonymous?
+    $sql = "SELECT f.anonymous
+              FROM {hsuforum_posts} p
+              JOIN {hsuforum_discussions} d ON d.id=p.discussion
+              JOIN {hsuforum} f ON f.id=d.forum
+             WHERE p.id=?";
+    $anonymous = $DB->get_field_sql($sql, array($post->id));
+
     $context = context_module::instance($cm->id);
     $fs = get_file_storage();
     $files = $fs->get_area_files($context->id, 'mod_hsuforum', 'attachment', $post->id, "timemodified", false);
@@ -4543,7 +4552,8 @@ function hsuforum_trigger_content_uploaded_event($post, $cm, $name) {
             'pathnamehashes' => array_keys($files),
             'discussionid' => $post->discussion,
             'triggeredfrom' => $name,
-        )
+        ),
+        'anonymous' => $anonymous
     );
     $event = \mod_hsuforum\event\assessable_uploaded::create($params);
     $event->trigger();
