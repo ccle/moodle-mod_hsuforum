@@ -245,6 +245,13 @@ class mod_hsuforum_mod_form extends moodleform_mod {
             $renderer = $PAGE->get_renderer('mod_hsuforum');
             $PAGE->requires->js_init_call('M.mod_hsuforum.init_modform', array(HSUFORUM_GRADETYPE_MANUAL), false, $renderer->get_js_module());
         }
+
+        // START UCLA MOD: CCLE-6951 - Rename Advanced Forum
+        $mform->setDefault('anonymous', 1);
+        $mform->setDefault('hidereveal', 1);
+        $mform->freeze('anonymous');
+        $mform->freeze('hidereveal');
+        // END UCLA MOD: CCLE-6951
     }
 
     function standard_grading_coursemodule_elements() {

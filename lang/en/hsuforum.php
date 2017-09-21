@@ -220,7 +220,10 @@ $string['hsuforum:addquestion'] = 'Add question';
 $string['hsuforum:rate'] = 'Rate posts';
 $string['hsuforum:replynews'] = 'Reply to news';
 $string['hsuforum:replypost'] = 'Reply to posts';
-$string['forums'] = 'Forums';
+// START UCLA MOD: CCLE-6951 - Rename Advanced Forum
+//$string['forums'] = 'Forums';
+$string['forums'] = 'Forums (Anonymous)';
+// END UCLA MOD: CCLE-6951
 $string['hsuforum:splitdiscussions'] = 'Split discussions';
 $string['hsuforum:startdiscussion'] = 'Start new discussions';
 $string['forumsubjecthidden'] = 'Subject (hidden)';
@@ -288,28 +291,35 @@ $string['modeflatnewestfirst'] = 'Display replies flat, with newest first';
 $string['modeflatoldestfirst'] = 'Display replies flat, with oldest first';
 $string['modenested'] = 'Display replies in nested form';
 $string['modethreaded'] = 'Display replies in threaded form';
-$string['modulename'] = 'Advanced Forum';
-$string['modulename_help'] = 'The Advanced Forum activity module enables participants to have asynchronous discussions,
-i.e., discussions that take place over an extended period of time.
-
-There are several forum types to choose from, such as a standard forum where anyone can start a new discussion at any time; a forum where each student can post exactly one discussion; or a question and answer forum where students must first post before being able to view other students\' posts. A teacher can allow files to be attached to forum posts. Attached images are displayed in the forum post.
-
-Participants can subscribe to a forum to receive notifications of new forum posts. A teacher can set the subscription mode to optional, forced or auto, or prevent subscription completely. If required, students can be blocked from posting more than a given number of posts in a given time period; this can prevent individuals from dominating discussions.
-
-Forum posts can be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.
-
-Forums have many uses, such as:
-
-* A social space for students to get to know each other
-* For course announcements (using a news forum with forced subscription)
-* For discussing course content or reading materials
-* For continuing online an issue raised previously in a face-to-face session
-* For teacher-only discussions (using a hidden forum)
-* A help centre where tutors and students can give advice
-* A one-on-one support area for private student-teacher communications (using a forum with separate groups and with one student per group)
-* For extension activities, for example ‘brain teasers’ for students to ponder and suggest solutions';
+// START UCLA MOD: CCLE-6951 - Rename Advanced Forum
+//$string['modulename'] = 'Advanced Forum';
+//$string['modulename_help'] = 'The Advanced Forum activity module enables participants to have asynchronous discussions,
+//i.e., discussions that take place over an extended period of time.
+//
+//There are several forum types to choose from, such as a standard forum where anyone can start a new discussion at any time; a forum where each student can post exactly one discussion; or a question and answer forum where students must first post before being able to view other students\' posts. A teacher can allow files to be attached to forum posts. Attached images are displayed in the forum post.
+//
+//Participants can subscribe to a forum to receive notifications of new forum posts. A teacher can set the subscription mode to optional, forced or auto, or prevent subscription completely. If required, students can be blocked from posting more than a given number of posts in a given time period; this can prevent individuals from dominating discussions.
+//
+//Forum posts can be rated by teachers or students (peer evaluation). Ratings can be aggregated to form a final grade which is recorded in the gradebook.
+//
+//Forums have many uses, such as:
+//
+//* A social space for students to get to know each other
+//* For course announcements (using a news forum with forced subscription)
+//* For discussing course content or reading materials
+//* For continuing online an issue raised previously in a face-to-face session
+//* For teacher-only discussions (using a hidden forum)
+//* A help centre where tutors and students can give advice
+//* A one-on-one support area for private student-teacher communications (using a forum with separate groups and with one student per group)
+//* For extension activities, for example ‘brain teasers’ for students to ponder and suggest solutions';
+$string['modulename'] = 'Forum (Anonymous)';
+$string['modulename_help'] = 'This forum supports only anonymous discussion posts.';
+// END UCLA MOD: CCLE-6951
 $string['modulename_link'] = 'mod/hsuforum/view';
-$string['modulenameplural'] = 'Advanced Forums';
+// START UCLA MOD: CCLE-6951 - Rename Advanced Forum
+//$string['modulenameplural'] = 'Advanced Forums';
+$string['modulenameplural'] = 'Forums (Anonymous)';
+// END UCLA MOD: CCLE-6951
 $string['more'] = 'more';
 $string['movedmarker'] = '(Moved)';
 $string['movethisdiscussionto'] = 'Move this discussion to ...';
