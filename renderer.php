@@ -1780,7 +1780,7 @@ HTML;
                 get_string('reply', 'hsuforum'),
                 array(
                     'title' => $replytitle,
-                    'class' => 'hsuforum-reply-link btn btn-default',
+                    'class' => 'hsuforum-reply-link btn btn-primary',
                 )
             );
         }
